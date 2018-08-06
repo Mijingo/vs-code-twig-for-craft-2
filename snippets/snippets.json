@@ -1,7 +1,7 @@
 {
     "asset": {
         "prefix": "asset",
-        "body": "{% set asset = ${1:entry.assetFieldHandle}.first() %}\n\n{% if asset %}\n\t<img src=\"{{ asset.getUrl('${2:thumb}') }}\" width=\"{{ asset.getWidth('${2:thumb}') }}\" height=\"{{ asset.getHeight('${2:thumb}') }}\" alt=\"{{ asset.title }}\">\n{% endif %}",
+        "body": "{% set asset = ${1:entry.assetFieldHandle}.one() %}\n\n{% if asset %}\n\t<img src=\"{{ asset.getUrl('${2:thumb}') }}\" width=\"{{ asset.getWidth('${2:thumb}') }}\" height=\"{{ asset.getHeight('${2:thumb}') }}\" alt=\"{{ asset.title }}\">\n{% endif %}",
         "description": "asset",
         "scope": "text.html.twig"
     },
@@ -140,7 +140,7 @@
     },
     "entries": {
         "prefix": "entries",
-        "body": "{% for entry in craft.entries\n\t.section('${1:sectionName}')\n\t.limit(${2:10})\n\t%}\n\t<a href=\"{{ entry.url }}\">{{ entry.title }}</a>\n{% endfor %}\n$0",
+        "body": "{% for entry in craft.entries\n\t.section('${1:sectionName}')\n\t.limit(${2:10})\n\t.all()%}\n\t<a href=\"{{ entry.url }}\">{{ entry.title }}</a>\n{% endfor %}\n$0",
         "description": "craft.entries",
         "scope": "text.html.twig"
     },
